@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 // import { v4 as uuidv4 } from 'uuid';
 import shortid from 'shortid';
+import './InputForm.css';
 
 class InputForm extends Component {
     state = {
-        contacts: [],
         name: ' ',
-        tag: ' ',  
+        number: ' ',  
         community: 'friends',
       };
       
   nameInputId = shortid.generate();
-  tagInputId = shortid.generate();
+  numberInputId = shortid.generate();
 
       handleChange = event => {
         // console.log(e.currentTarget);
@@ -42,30 +42,40 @@ class InputForm extends Component {
       }
 
       reset = () => {
-        this.setState({ name: '', tag: '' });
+        this.setState({ name: '', number: '' })
     };
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-        <label htmlFor={this.nameInputId}>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor={this.nameInputId}>
           Name 
           <input 
           type="text" 
           name="name"
+          className="label"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+          required
           value={this.state.value} 
           onChange={this.handleChange}
-          id={this.nameInputId} />
+          id={this.nameInputId}
+          placeholder="Input name" />
         </label>
 
-        <label htmlFor={this.tagInputId}>
-          Tag 
+        <label htmlFor={this.numberInputId}>
+          Number 
           <input 
-          type="text" 
-          name="tag"
+          type="tel"
+          name="number"
+          className="label"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+          required
           value={this.state.value} 
           onChange={this.handleChange}
-          id={this.tagInputId}/>
+          id={this.numberInputId}
+          placeholder="Input number"/>
         </label>
         <br />
 <label>
@@ -81,7 +91,8 @@ class InputForm extends Component {
 <label>
     <input 
     type="radio" 
-    name="" value="friends" 
+    name="" 
+    value="friends" 
     onChange={this.handleChange}
     checked={this.state.community === 'friends'}
     />friends
@@ -90,7 +101,8 @@ class InputForm extends Component {
 <label>
     <input 
     type="radio" 
-    name="" value="job" 
+    name="" 
+    value="job" 
     onChange={this.handleChange}
     checked={this.state.community === 'job'}
     />job
@@ -98,7 +110,7 @@ class InputForm extends Component {
         
     <br />
 
-        <button type="submit">Add</button>
+        <button type="submit" className="button">Add contact</button>
       </form>
         )
     }
