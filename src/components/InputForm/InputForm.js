@@ -5,52 +5,41 @@ import './InputForm.css';
 
 class InputForm extends Component {
     state = {
-        name: ' ',
-        number: ' ',  
+        name: '',
+        number: '',  
         community: 'friends',
       };
       
   nameInputId = shortid.generate();
   numberInputId = shortid.generate();
 
-      handleChange = event => {
-        // console.log(e.currentTarget);
-        // console.log(e.currentTarget.name);
-        // console.log(e.currentTarget.value);
-    
-        const {name, value} = event.currentTarget
+handleChange = event => {
+    const {name, value} = event.currentTarget
 
-        this.setState({
-            [name]: value,
+    this.setState({
+        community: value,
     });
-      }
+};
     
-      // handleNameChange = event => {
-      //   this.setState({ name: event.currentTarget.value });
-      // }
+handleSubmit = e => {
+  e.preventDefault();
     
-      // handleTagChange = event => {
-      //   this.setState({ tag: event.currentTarget.value })
-      // }
+    this.props.onSubmit(this.state);
 
-     handleSubmit = e => {
-        e.preventDefault();
-    
-        this.props.onSubmit(this.state);
+    this.reset();
+};
 
-        this.reset();
-      }
+reset = () => {
+    this.setState({ name: '', number: '' })
+};
 
-      reset = () => {
-        this.setState({ name: '', number: '' })
-    };
+render() {
+  return (
 
-    render() {
-        return (
-        <form  onSubmit={this.handleSubmit}>
-          <label className="input-form" htmlFor={this.nameInputId}>
-          Name 
-          <input 
+    <form  onSubmit={this.handleSubmit}>
+      <label className="input-form" htmlFor={this.nameInputId}>
+      Name 
+        <input 
           type="text" 
           name="name"
           className="label"
@@ -61,10 +50,10 @@ class InputForm extends Component {
           onChange={this.handleChange}
           id={this.nameInputId}
           placeholder="Input name" />
-        </label>
+      </label>
 
-        <label className="input-form" htmlFor={this.numberInputId}>
-          Number 
+      <label className="input-form" htmlFor={this.numberInputId}>
+      Number 
           <input 
           type="tel"
           name="number"
@@ -77,21 +66,20 @@ class InputForm extends Component {
           id={this.numberInputId}
           placeholder="Input number"/>
         </label>
-        <br />
+    <br />
         
 <container className="radio">
-<label className="radio-form">
+  <label className="radio-form">
     <input 
     type="radio" 
     name="" 
-    
     value="family" 
     onChange={this.handleChange}
     checked={this.state.community === 'family'} 
     />family
-</label>
+  </label>
 
-<label className="radio-form">
+  <label className="radio-form">
     <input 
     type="radio" 
     name="" 
@@ -99,9 +87,9 @@ class InputForm extends Component {
     onChange={this.handleChange}
     checked={this.state.community === 'friends'}
     />friends
-</label>
+  </label>
 
-<label className="radio-form">
+  <label className="radio-form">
     <input 
     type="radio" 
     name="" 
@@ -109,13 +97,13 @@ class InputForm extends Component {
     onChange={this.handleChange}
     checked={this.state.community === 'job'}
     />job
-</label>
+  </label>
         
     <br />
 
-        <button type="submit" className="button">Add contact</button>
-        </container>
-      </form>
+      <button type="submit" className="button">Add contact</button>
+     </container>
+  </form>
         )
     }
 }

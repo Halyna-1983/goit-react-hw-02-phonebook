@@ -3,11 +3,8 @@ import InputForm from './components/InputForm';
 import ContactList from './components/ContactsList';
 import Filter from './components/Filter';
 import shortid from 'shortid';
-
-
-
 import './App.css';
-// import InputForm from './components/InputForm';
+
 
 class App extends Component {
   state = {
@@ -22,33 +19,6 @@ class App extends Component {
     number: ''
   };
 
-// formSubmitHandler = data => {
-//   console.log(data);
-// }
-
-  // handleChange = e => {
-  //   // console.log(e.currentTarget);
-  //   // console.log(e.currentTarget.name);
-  //   // console.log(e.currentTarget.value);
-
-  //   this.setState({
-  //     [e.currentTarget.name]: e.currentTarget.value,
-  //   })
-  // }
-
-  // handleNameChange = event => {
-  //   this.setState({ name: event.currentTarget.value });
-  // }
-
-  // handleTagChange = event => {
-  //   this.setState({ tag: event.currentTarget.value })
-  // }
-
-  // handleSubmit = e => {
-  //   e.preventDefault();
-
-  //   console.log(this.state);
-  // }
 
   deleteContact = (contactId) => {
     this.setState(
@@ -61,6 +31,7 @@ class App extends Component {
       alert(`${name} is already in contacts.`);
       return;
     }
+
     const contact = { id: shortid.generate(), name, number };
     this.setState(
       prevState => ({ contacts: [contact, ...prevState.contacts] })
@@ -69,8 +40,7 @@ class App extends Component {
 
   filter = (event) => {
     this.setState(
-      {
-        filter: event.currentTarget.value
+      { filter: event.currentTarget.value
       }
     )
   }
