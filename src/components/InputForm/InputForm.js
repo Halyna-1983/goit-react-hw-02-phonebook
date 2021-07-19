@@ -47,8 +47,8 @@ class InputForm extends Component {
 
     render() {
         return (
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor={this.nameInputId}>
+        <form  onSubmit={this.handleSubmit}>
+          <label className="input-form" htmlFor={this.nameInputId}>
           Name 
           <input 
           type="text" 
@@ -63,7 +63,7 @@ class InputForm extends Component {
           placeholder="Input name" />
         </label>
 
-        <label htmlFor={this.numberInputId}>
+        <label className="input-form" htmlFor={this.numberInputId}>
           Number 
           <input 
           type="tel"
@@ -78,17 +78,20 @@ class InputForm extends Component {
           placeholder="Input number"/>
         </label>
         <br />
-<label>
+        
+<container className="radio">
+<label className="radio-form">
     <input 
     type="radio" 
     name="" 
+    
     value="family" 
     onChange={this.handleChange}
     checked={this.state.community === 'family'} 
     />family
 </label>
 
-<label>
+<label className="radio-form">
     <input 
     type="radio" 
     name="" 
@@ -98,7 +101,7 @@ class InputForm extends Component {
     />friends
 </label>
 
-<label>
+<label className="radio-form">
     <input 
     type="radio" 
     name="" 
@@ -111,6 +114,7 @@ class InputForm extends Component {
     <br />
 
         <button type="submit" className="button">Add contact</button>
+        </container>
       </form>
         )
     }

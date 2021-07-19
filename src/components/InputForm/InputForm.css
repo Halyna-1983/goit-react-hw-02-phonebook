@@ -1,3 +1,14 @@
+.input-form {
+    display: flex;
+    width: 400px;
+    padding: 10px;
+    border: 1px solid grey;
+    background-color: rgb(195, 240, 203);
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .label {
     margin-left: 20px;
     margin-right: 20px;
@@ -6,5 +17,32 @@
 .button {
     margin-top: 20px;
     margin-bottom: 20px;
-    
+    height: 40px;
+    background-color: blue;
+    color: white;
+    border-radius: 25%;
+}
+
+.radio {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 50%;
+    border: 1px solid grey;
+    background-color: rgb(199, 214, 199);
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.radio-form {
+    display: inline-block;
+    width: 80px;
+    padding: 10px;
+    border: 1px solid grey;
+    /* border-radius: 20%; */
+    background-color: #fff;
+
+    margin-left: 20px;
+    margin-right: 20px;
 }

@@ -4,9 +4,9 @@ import './Filter.css';
 
 const Filter = ({valueState, filterByName}) => {
   return (
-    <label>
+    <label className="label-filter">
         Filter
-      <input type="text" className="label" value={valueState} onChange={filterByName}/>
+      <input type="text" className="input-filter" value={valueState} onChange={filterByName}/>
       
     </label>
   )
