@@ -16,8 +16,9 @@ class InputForm extends Component {
 handleChange = event => {
     const {name, value} = event.currentTarget
 
-    this.setState({
-        community: value,
+    this.setState({ 
+        [name]: value,
+        id: shortid.generate(),
     });
 };
     
@@ -46,7 +47,7 @@ render() {
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
           required
-          value={this.state.value} 
+          value={this.state.name} 
           onChange={this.handleChange}
           id={this.nameInputId}
           placeholder="Input name" />
@@ -61,7 +62,7 @@ render() {
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
           required
-          value={this.state.value} 
+          value={this.state.number} 
           onChange={this.handleChange}
           id={this.numberInputId}
           placeholder="Input number"/>
@@ -72,7 +73,7 @@ render() {
   <label className="radio-form">
     <input 
     type="radio" 
-    name="" 
+    name="community" 
     value="family" 
     onChange={this.handleChange}
     checked={this.state.community === 'family'} 
@@ -82,7 +83,7 @@ render() {
   <label className="radio-form">
     <input 
     type="radio" 
-    name="" 
+    name="community" 
     value="friends" 
     onChange={this.handleChange}
     checked={this.state.community === 'friends'}
@@ -92,7 +93,7 @@ render() {
   <label className="radio-form">
     <input 
     type="radio" 
-    name="" 
+    name="community" 
     value="job" 
     onChange={this.handleChange}
     checked={this.state.community === 'job'}
