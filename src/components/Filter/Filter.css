@@ -4,8 +4,9 @@
     margin-right: auto;
     margin-top: 20px;
     margin-bottom: 20px;
+    padding: 20px;
 
-    width: 50%;
+    width: 400px;
     border: 1px solid grey;
     background-color: rgb(216, 158, 156);
     text-align: center;
